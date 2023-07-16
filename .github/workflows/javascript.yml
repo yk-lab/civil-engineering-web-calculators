@@ -43,7 +43,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm coverage
-      - run: pnpm generate
+      - run: pnpm build
       - name: Send webpack stats to RelativeCI
         uses: relative-ci/agent-action@v2
         with:

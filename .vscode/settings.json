@@ -1,7 +1,7 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // },
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": true,
   "editor.renderControlCharacters": true,
@@ -29,5 +29,6 @@
   "[javascript]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "tailwindCSS.codeActions": false
 }
