@@ -1,0 +1,33 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.renderControlCharacters": true,
+  "editor.suggest.localityBonus": true,
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
+  "extensions.ignoreRecommendations": false,
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "vue": "html"
+  },
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

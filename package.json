@@ -1,0 +1,71 @@
+{
+  "name": "civil-engineering-calculators",
+  "private": true,
+  "packageManager": "pnpm@8.6.6",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prepare": "husky install",
+    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
+    "lint:prettier": "prettier --check .",
+    "lint": "pnpm lint:js && pnpm lint:style && pnpm lint:prettier",
+    "lintfix": "prettier --write --list-different . && pnpm lint:js --fix && pnpm lint:style --fix",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": "eslint --cache",
+    "*.{css,scss,sass,html,vue}": "stylelint",
+    "*.**": "prettier --check --ignore-unknown"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sh hooks/pre-commit"
+    }
+  },
+  "devDependencies": {
+    "@dargmuesli/nuxt-cookie-control": "6.1.1",
+    "@heroicons/vue": "2.0.18",
+    "@nuxt/devtools": "0.6.7",
+    "@nuxtjs/eslint-config-typescript": "12.0.0",
+    "@nuxtjs/eslint-module": "4.1.0",
+    "@nuxtjs/robots": "3.0.0",
+    "@nuxtjs/tailwindcss": "6.8.0",
+    "@nuxtjs/web-vitals": "0.2.6",
+    "@tailwindcss/forms": "0.5.4",
+    "@tailwindcss/typography": "0.5.9",
+    "@types/node": "20.4.2",
+    "autoprefixer": "10.4.14",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-nuxt": "4.0.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-tailwindcss": "3.13.0",
+    "eslint-plugin-vue": "9.15.1",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.3",
+    "nuxt-cloudflare-analytics": "1.0.8",
+    "nuxt-gtag": "0.5.7",
+    "nuxt-headlessui": "1.1.4",
+    "nuxt-purgecss": "2.0.0",
+    "nuxt-vitest": "0.9.0",
+    "nuxt": "3.6.3",
+    "postcss-html": "1.5.0",
+    "postcss": "8.4.26",
+    "prettier-plugin-tailwindcss": "0.4.1",
+    "prettier": "3.0.0",
+    "rollup-plugin-webpack-stats": "0.2.0",
+    "scroll-hint": "1.2.5",
+    "stylelint-config-standard": "34.0.0",
+    "stylelint": "15.10.1",
+    "tailwindcss": "3.3.3"
+  }
+}
