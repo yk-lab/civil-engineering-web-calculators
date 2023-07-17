@@ -33,7 +33,7 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  id: uuid4(),
+  id: () => uuid4(),
 });
 
 interface Emits {
