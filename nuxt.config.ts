@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     'nuxt-cloudflare-analytics',
     'nuxt-gtag',
     'nuxt-headlessui',
-    'nuxt-purgecss',
+    // 'nuxt-purgecss',
     'nuxt-vitest',
   ],
 
