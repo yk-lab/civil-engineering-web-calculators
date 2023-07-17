@@ -1,23 +1,25 @@
 <template>
-  <div class="space-y-12">
-    <div class="space-y-8">
-      <h3 class="text-base font-semibold leading-7 text-gray-900">計算条件</h3>
-
+  <CalcInputOutput>
+    <template #input>
       <div>
         <label
-          for="n"
+          for="N"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
-          割合 (<KatexElement expression="\frac{h}{d} \times 10" />)
+          割合
+          <ClientOnly
+            ><KatexElement
+              :display-mode="false"
+              expression="\frac{h}{d} \times 10"
+          /></ClientOnly>
         </label>
         <div class="relative mt-2 rounded-md shadow-sm">
           <input
-            id="n"
+            id="N"
             v-model.number="values.n"
             type="number"
             class="block w-full rounded-md border-0 py-1.5 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 8"
-            inputmode="decimal"
           />
           <div
             class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
@@ -32,7 +34,10 @@
           for="d"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
-          管径 (<KatexElement expression="d" />)
+          管径
+          <ClientOnly
+            ><KatexElement :display-mode="false" expression="d"
+          /></ClientOnly>
         </label>
         <div class="mt-2">
           <input
@@ -41,21 +46,21 @@
             type="number"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 200"
-            inputmode="decimal"
           />
         </div>
       </div>
-    </div>
+    </template>
 
-    <div class="space-y-8">
-      <h3 class="text-base font-semibold leading-7 text-gray-900">計算結果</h3>
-
+    <template #output>
       <div>
         <label
           for="result"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
-          {{ values.n || 'n' }}割水深 (<KatexElement expression="h" />)
+          {{ values.n || 'N' }}割水深
+          <ClientOnly
+            ><KatexElement :display-mode="false" expression="h"
+          /></ClientOnly>
         </label>
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
@@ -77,8 +82,8 @@
           </button>
         </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </CalcInputOutput>
 </template>
 
 <script setup lang="ts">
