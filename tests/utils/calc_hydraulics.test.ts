@@ -30,7 +30,7 @@ describe('calcNDepth: n割水深', () => {
 
 describe('calcCentralAngle: 中心角', () => {
   describe.each<[number, number, number]>([
-    [1, 1, 6.26319],
+    [1, 1, 6.28319],
     [1, 2, 3.14159],
     [80, 100, 4.42859],
     [0, 1, 0],

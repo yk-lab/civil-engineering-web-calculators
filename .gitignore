@@ -24,3 +24,6 @@ logs
 
 # Cache
 .stylelintcache
+
+# Coverage
+coverage/
