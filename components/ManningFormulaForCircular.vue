@@ -11,14 +11,17 @@
             ><KatexElement :display-mode="false" expression="d"
           /></ClientOnly>
         </label>
-        <div class="mt-2">
+        <div class="relative mt-2 rounded-md shadow-sm">
           <input
             id="d"
-            v-model.number="values.d"
+            v-model.number="values.d.value"
             type="number"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+            class="block w-full rounded-md border-0 py-1.5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 200"
           />
+          <div class="absolute inset-y-0 right-0 flex items-center">
+            <LengthUnitSelector v-model="values.d.unit" />
+          </div>
         </div>
       </div>
 
@@ -32,14 +35,17 @@
             ><KatexElement :display-mode="false" expression="h"
           /></ClientOnly>
         </label>
-        <div class="mt-2">
+        <div class="relative mt-2 rounded-md shadow-sm">
           <input
             id="h"
-            v-model.number="values.h"
+            v-model.number="values.h.value"
             type="number"
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+            class="block w-full rounded-md border-0 py-1.5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 180"
           />
+          <div class="absolute inset-y-0 right-0 flex items-center">
+            <LengthUnitSelector v-model="values.h.unit" />
+          </div>
         </div>
       </div>
 
@@ -107,7 +113,7 @@
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
               id="rad"
-              v-model.number="rad"
+              :value="displayScalar(rad)"
               type="number"
               class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
@@ -116,7 +122,7 @@
           <button
             type="button"
             class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            @click="copy(rad.toString())"
+            @click="copy(displayScalar(rad).toString())"
           >
             <ClipboardIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             <span class="sr-only">コピー</span>
@@ -140,16 +146,23 @@
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
               id="circularWaterWidth"
-              v-model.number="circularWaterWidth"
+              :value="displayScalar(circularWaterWidth)"
               type="number"
               class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <span class="text-gray-500 sm:text-sm">
+                {{ displayUnit(circularWaterWidth) }}
+              </span>
+            </div>
           </div>
           <button
             type="button"
             class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            @click="copy(circularWaterWidth.toString())"
+            @click="copy(displayScalar(circularWaterWidth).toString())"
           >
             <ClipboardIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             <span class="sr-only">コピー</span>
@@ -171,16 +184,23 @@
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
               id="circularWettedPerimeter"
-              v-model.number="circularWettedPerimeter"
+              :value="displayScalar(circularWettedPerimeter)"
               type="number"
               class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <span class="text-gray-500 sm:text-sm">
+                {{ displayUnit(circularWettedPerimeter) }}
+              </span>
+            </div>
           </div>
           <button
             type="button"
             class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            @click="copy(circularWettedPerimeter.toString())"
+            @click="copy(displayScalar(circularWettedPerimeter).toString())"
           >
             <ClipboardIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             <span class="sr-only">コピー</span>
@@ -204,16 +224,23 @@
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
               id="circularFlowArea"
-              v-model.number="circularFlowArea"
+              :value="displayScalar(circularFlowArea)"
               type="number"
               class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <span class="text-gray-500 sm:text-sm">
+                {{ displayUnit(circularFlowArea) }}
+              </span>
+            </div>
           </div>
           <button
             type="button"
             class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            @click="copy(circularFlowArea.toString())"
+            @click="copy(displayScalar(circularFlowArea).toString())"
           >
             <ClipboardIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             <span class="sr-only">コピー</span>
@@ -237,16 +264,23 @@
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
               id="circularDepth"
-              v-model.number="circularDepth"
+              :value="displayScalar(circularDepth)"
               type="number"
               class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <span class="text-gray-500 sm:text-sm">
+                {{ displayUnit(circularDepth) }}
+              </span>
+            </div>
           </div>
           <button
             type="button"
             class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            @click="copy(circularDepth.toString())"
+            @click="copy(displayScalar(circularDepth).toString())"
           >
             <ClipboardIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             <span class="sr-only">コピー</span>
@@ -271,16 +305,23 @@
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
               id="manningAverageVelocity"
-              v-model.number="manningAverageVelocity"
+              :value="displayScalar(manningAverageVelocity)"
               type="number"
               class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <span class="text-gray-500 sm:text-sm">
+                {{ displayUnit(manningAverageVelocity) }}
+              </span>
+            </div>
           </div>
           <button
             type="button"
             class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            @click="copy(manningAverageVelocity.toString())"
+            @click="copy(displayScalar(manningAverageVelocity).toString())"
           >
             <ClipboardIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             <span class="sr-only">コピー</span>
@@ -305,16 +346,23 @@
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
               id="manningFlowVolume"
-              v-model.number="manningFlowVolume"
+              :value="displayScalar(manningFlowVolume)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full rounded-none rounded-l-md border-0 py-1.5 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <span class="text-gray-500 sm:text-sm">
+                {{ displayUnit(manningFlowVolume) }}
+              </span>
+            </div>
           </div>
           <button
             type="button"
             class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            @click="copy(manningFlowVolume.toString())"
+            @click="copy(displayScalar(manningFlowVolume).toString())"
           >
             <ClipboardIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
             <span class="sr-only">コピー</span>
@@ -328,21 +376,35 @@
 <script setup lang="ts">
 import { ClipboardIcon } from '@heroicons/vue/24/outline';
 import { useClipboard } from '@vueuse/core';
+import Qty from 'js-quantities';
 
+import type { LengthUnitsBasedMeter } from 'utils/length_utils';
 import type { ManningRoughnessCoefficient } from 'utils/manning_formula';
 
 const clipboard = useClipboard();
 const notifications = useNotifications();
 
 const values = ref<{
-  h: number | '';
-  d: number | '';
+  h: {
+    value: number | '';
+    unit: LengthUnitsBasedMeter;
+  };
+  d: {
+    value: number | '';
+    unit: LengthUnitsBasedMeter;
+  };
   n: ManningRoughnessCoefficient;
   nDirect: number | '';
   i: number | '';
 }>({
-  h: '',
-  d: '',
+  h: {
+    value: '',
+    unit: 'mm',
+  },
+  d: {
+    value: '',
+    unit: 'mm',
+  },
   n: manningRoughnessCoefficients[0],
   nDirect: '',
   i: '',
@@ -362,60 +424,91 @@ const n = computed(() => {
 });
 
 const rad = computed(() => {
-  if (values.value.h === '' || values.value.d === '') {
+  if (values.value.h.value === '' || values.value.d.value === '') {
     return '';
   }
-  return calcCentralAngle(values.value.h, values.value.d);
+  const h = new Qty(values.value.h.value, values.value.h.unit);
+  const d = new Qty(values.value.d.value, values.value.d.unit).to(h);
+  return calcCentralAngle(h.scalar, d.scalar);
 });
 
 /**
  * 円形断面の水面幅
  */
 const circularWaterWidth = computed(() => {
-  if (values.value.d === '' || rad.value === '') {
+  if (values.value.d.value === '' || rad.value === '') {
     return '';
   }
-  return calcCircularWaterWidth(values.value.d, rad.value);
+  return new Qty(
+    calcCircularWaterWidth(values.value.d.value, rad.value),
+    values.value.d.unit,
+  );
 });
 
 /**
  * 円形断面の潤辺
  */
 const circularWettedPerimeter = computed(() => {
-  if (values.value.d === '' || rad.value === '') {
+  if (values.value.d.value === '' || rad.value === '') {
     return '';
   }
-  return calcCircularWettedPerimeter(values.value.d, rad.value);
+  return new Qty(
+    calcCircularWettedPerimeter(values.value.d.value, rad.value),
+    values.value.d.unit,
+  );
 });
 
 /**
  * 円形断面の流水断面積 (流積)
  */
 const circularFlowArea = computed(() => {
-  if (values.value.d === '' || rad.value === '') {
+  if (values.value.d.value === '' || rad.value === '') {
     return '';
   }
-  return calcCircularFlowArea(values.value.d, rad.value);
+
+  const getUnit = (unit: LengthUnitsBasedMeter): string => {
+    switch (unit) {
+      case 'mm':
+        return 'mm^2';
+      case 'cm':
+        return 'cm^2';
+      case 'm':
+        return 'm^2';
+      case 'km':
+        return 'km^2';
+    }
+  };
+
+  return new Qty(
+    calcCircularFlowArea(values.value.d.value, rad.value),
+    getUnit(values.value.d.unit),
+  );
 });
 
 /**
  * 円形断面の径深
  */
 const circularDepth = computed(() => {
-  if (values.value.d === '' || rad.value === '') {
+  if (values.value.d.value === '' || rad.value === '') {
     return '';
   }
-  return calcCircularDepth(values.value.d, rad.value);
+  return new Qty(
+    calcCircularDepth(values.value.d.value, rad.value),
+    values.value.d.unit,
+  );
 });
 
 const manningAverageVelocity = computed(() => {
   if (n.value === '' || circularDepth.value === '' || values.value.i === '') {
     return '';
   }
-  return calcManningAverageVelocity(
-    n.value,
-    circularDepth.value,
-    values.value.i,
+  return new Qty(
+    calcManningAverageVelocity(
+      n.value,
+      circularDepth.value.toBase().scalar,
+      values.value.i,
+    ),
+    'm/s',
   );
 });
 
@@ -428,15 +521,32 @@ const manningFlowVolume = computed(() => {
   ) {
     return '';
   }
-  return calcManningFlowVolume(
-    n.value,
-    circularDepth.value,
-    values.value.i,
-    circularFlowArea.value,
+  return new Qty(
+    calcManningFlowVolume(
+      n.value,
+      circularDepth.value.toBase().scalar,
+      values.value.i,
+      circularFlowArea.value.toBase().scalar,
+    ),
+    'm^3/s',
   );
 });
 
 // methods
+const displayScalar = (qty: Qty | string | number) => {
+  if (qty instanceof Qty) {
+    return qty.scalar;
+  }
+  return qty;
+};
+
+const displayUnit = (qty: Qty | string | number) => {
+  if (qty instanceof Qty) {
+    return qty.units();
+  }
+  return '';
+};
+
 const copy = (str: string) => {
   if (str === '') {
     return;

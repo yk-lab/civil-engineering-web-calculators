@@ -47,6 +47,9 @@ devDependencies:
   '@tailwindcss/typography':
     specifier: 0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
+  '@types/js-quantities':
+    specifier: ^1.6.3
+    version: 1.6.3
   '@types/node':
     specifier: 20.4.2
     version: 20.4.2
@@ -83,6 +86,9 @@ devDependencies:
   husky:
     specifier: 8.0.3
     version: 8.0.3
+  js-quantities:
+    specifier: 1.7.6
+    version: 1.7.6
   katex:
     specifier: 0.16.8
     version: 0.16.8
@@ -2009,6 +2015,10 @@ packages:
     resolution: {integrity: sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==}
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
+    dev: true
+
+  /@types/js-quantities@1.6.3:
+    resolution: {integrity: sha512-YwBhHz9Ad7GH/hvg8P9qoKoqG5+xYsM2AQpb96jCDS9HbIj3m24RPgoY2xKPUd5LYAIkaL26igRQQrETf4Gwxg==}
     dev: true
 
   /@types/json-schema@7.0.12:
@@ -6231,6 +6241,10 @@ packages:
       editorconfig: 0.15.3
       glob: 8.1.0
       nopt: 6.0.0
+    dev: true
+
+  /js-quantities@1.7.6:
+    resolution: {integrity: sha512-h6TH1xK1u/zdjD26M6kKVthZONJSDTIRzrohbqOILfJAyanWHGlJLWuAWkSMtqi8k/IxshStsc97Pkf8SL9yvA==}
     dev: true
 
   /js-string-escape@1.0.1:
