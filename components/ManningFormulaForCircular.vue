@@ -466,23 +466,8 @@ const circularFlowArea = computed(() => {
     return '';
   }
 
-  const getUnit = (unit: LengthUnitsBasedMeter): string => {
-    switch (unit) {
-      case 'mm':
-        return 'mm^2';
-      case 'cm':
-        return 'cm^2';
-      case 'm':
-        return 'm^2';
-      case 'km':
-        return 'km^2';
-    }
-  };
-
-  return new Qty(
-    calcCircularFlowArea(values.value.d.value, rad.value),
-    getUnit(values.value.d.unit),
-  );
+  const d = new Qty(values.value.d.value, values.value.d.unit);
+  return new Qty(calcCircularFlowArea(d.baseScalar, rad.value), 'm^2');
 });
 
 /**

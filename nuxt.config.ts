@@ -21,6 +21,19 @@ export default defineNuxtConfig({
     'nuxt-vitest',
   ],
 
+  robots: {
+    rules:
+      process.env.ROBOTS_ALLOW === 'true'
+        ? {
+            UserAgent: '*',
+            Allow: '/',
+          }
+        : {
+            UserAgent: '*',
+            Disallow: '/',
+          },
+  },
+
   vite: {
     plugins: [
       // Output webpack-stats.json file
