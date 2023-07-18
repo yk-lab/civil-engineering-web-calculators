@@ -84,6 +84,7 @@
           <ClientOnly
             ><KatexElement :display-mode="false" expression="i"
           /></ClientOnly>
+          [%]
         </label>
         <div class="mt-2">
           <input
@@ -91,7 +92,7 @@
             v-model.number="values.i"
             type="number"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
-            placeholder="例) 0.01"
+            placeholder="例) 0.3"
           />
         </div>
       </div>
@@ -491,7 +492,7 @@ const manningAverageVelocity = computed(() => {
     calcManningAverageVelocity(
       n.value,
       circularDepth.value.toBase().scalar,
-      values.value.i,
+      values.value.i / 100,
     ),
     'm/s',
   );
@@ -510,7 +511,7 @@ const manningFlowVolume = computed(() => {
     calcManningFlowVolume(
       n.value,
       circularDepth.value.toBase().scalar,
-      values.value.i,
+      values.value.i / 100,
       circularFlowArea.value.toBase().scalar,
     ),
     'm^3/s',
