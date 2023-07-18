@@ -3,7 +3,7 @@
     <template #input>
       <div>
         <label
-          for="N"
+          :for="`${baseId}-N`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           割合
@@ -15,7 +15,7 @@
         </label>
         <div class="relative mt-2 rounded-md shadow-sm">
           <input
-            id="N"
+            :id="`${baseId}-N`"
             v-model.number="values.n"
             type="number"
             class="block w-full rounded-md border-0 py-1.5 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
@@ -24,14 +24,16 @@
           <div
             class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
           >
-            <span id="n-unit" class="text-gray-500 sm:text-sm">割</span>
+            <span :id="`${baseId}-n-unit`" class="text-gray-500 sm:text-sm"
+              >割</span
+            >
           </div>
         </div>
       </div>
 
       <div>
         <label
-          for="d"
+          :for="`${baseId}-d`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           管径
@@ -41,7 +43,7 @@
         </label>
         <div class="mt-2">
           <input
-            id="d"
+            :id="`${baseId}-d`"
             v-model.number="values.d"
             type="number"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
@@ -54,7 +56,7 @@
     <template #output>
       <div>
         <label
-          for="result"
+          :for="`${baseId}-result`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           {{ values.n || 'N' }}割水深
@@ -65,7 +67,7 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="result"
+              :id="`${baseId}-result`"
               v-model.number="result"
               type="number"
               class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
@@ -89,6 +91,14 @@
 <script setup lang="ts">
 import { ClipboardIcon } from '@heroicons/vue/24/outline';
 import { useClipboard } from '@vueuse/core';
+import uuid4 from 'uuid4';
+
+interface Props {
+  baseId?: string;
+}
+withDefaults(defineProps<Props>(), {
+  baseId: () => uuid4(),
+});
 
 const clipboard = useClipboard();
 const notifications = useNotifications();

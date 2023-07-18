@@ -3,7 +3,7 @@
     <template #input>
       <div>
         <label
-          for="d"
+          :for="`${baseId}-d`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           管径
@@ -13,9 +13,10 @@
         </label>
         <div class="relative mt-2 rounded-md shadow-sm">
           <input
-            id="d"
+            :id="`${baseId}-d`"
             v-model.number="values.d.value"
             type="number"
+            name="d"
             class="block w-full rounded-md border-0 py-1.5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 200"
           />
@@ -27,7 +28,7 @@
 
       <div>
         <label
-          for="h"
+          :for="`${baseId}-h`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           水深
@@ -37,9 +38,10 @@
         </label>
         <div class="relative mt-2 rounded-md shadow-sm">
           <input
-            id="h"
+            :id="`${baseId}-h`"
             v-model.number="values.h.value"
             type="number"
+            name="h"
             class="block w-full rounded-md border-0 py-1.5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 180"
           />
@@ -51,7 +53,7 @@
 
       <div>
         <label
-          for="n"
+          :for="`${baseId}-n`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           マニングの粗度係数
@@ -63,12 +65,16 @@
           </ClientOnly>
         </label>
         <div class="mt-2">
-          <ManningRoughnessCoefficientSelector id="n" v-model="values.n" />
+          <ManningRoughnessCoefficientSelector
+            :id="`${baseId}-n`"
+            v-model="values.n"
+          />
         </div>
         <div v-if="enableNDirectInput" class="mt-2">
           <input
             v-model.number="values.nDirect"
             type="number"
+            name="n"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 0.013"
           />
@@ -77,7 +83,7 @@
 
       <div>
         <label
-          for="i"
+          :for="`${baseId}-i`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           水路勾配
@@ -88,9 +94,10 @@
         </label>
         <div class="mt-2">
           <input
-            id="i"
+            :id="`${baseId}-i`"
             v-model.number="values.i"
             type="number"
+            name="i"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
             placeholder="例) 0.3"
           />
@@ -101,7 +108,7 @@
     <template #output>
       <div>
         <label
-          for="rad"
+          :for="`${baseId}-rad`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           中心角
@@ -113,10 +120,10 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="rad"
+              :id="`${baseId}-rad`"
               :value="displayScalar(rad)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full select-all rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
           </div>
@@ -133,7 +140,7 @@
 
       <div>
         <label
-          for="circularWaterWidth"
+          :for="`${baseId}-circularWaterWidth`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           水面幅
@@ -146,10 +153,10 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="circularWaterWidth"
+              :id="`${baseId}-circularWaterWidth`"
               :value="displayScalar(circularWaterWidth)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full select-all rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
             <div
@@ -173,7 +180,7 @@
 
       <div>
         <label
-          for="circularWettedPerimeter"
+          :for="`${baseId}-circularWettedPerimeter`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           潤辺
@@ -184,10 +191,10 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="circularWettedPerimeter"
+              :id="`${baseId}-circularWettedPerimeter`"
               :value="displayScalar(circularWettedPerimeter)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full select-all rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
             <div
@@ -211,7 +218,7 @@
 
       <div>
         <label
-          for="circularFlowArea"
+          :for="`${baseId}-circularFlowArea`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           流水断面積（流積）
@@ -224,10 +231,10 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="circularFlowArea"
+              :id="`${baseId}-circularFlowArea`"
               :value="displayScalar(circularFlowArea)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full select-all rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
             <div
@@ -251,7 +258,7 @@
 
       <div>
         <label
-          for="circularDepth"
+          :for="`${baseId}-circularDepth`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           径深
@@ -264,10 +271,10 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="circularDepth"
+              :id="`${baseId}-circularDepth`"
               :value="displayScalar(circularDepth)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full select-all rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
             <div
@@ -291,7 +298,7 @@
 
       <div>
         <label
-          for="manningAverageVelocity"
+          :for="`${baseId}-manningAverageVelocity`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           マニングの平均流速
@@ -305,10 +312,10 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="manningAverageVelocity"
+              :id="`${baseId}-manningAverageVelocity`"
               :value="displayScalar(manningAverageVelocity)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full select-all rounded-none rounded-l-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
             <div
@@ -332,7 +339,7 @@
 
       <div>
         <label
-          for="manningFlowVolume"
+          :for="`${baseId}-manningFlowVolume`"
           class="block text-sm font-medium leading-6 text-gray-900"
         >
           マニングの平均流速から求めた流量
@@ -346,10 +353,10 @@
         <div class="mt-2 flex rounded-md shadow-sm">
           <div class="relative flex grow items-stretch focus-within:z-10">
             <input
-              id="manningFlowVolume"
+              :id="`${baseId}-manningFlowVolume`"
               :value="displayScalar(manningFlowVolume)"
               type="number"
-              class="block w-full rounded-none rounded-l-md border-0 py-1.5 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
+              class="block w-full select-all rounded-none rounded-l-md border-0 py-1.5 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
               readonly
             />
             <div
@@ -378,9 +385,17 @@
 import { ClipboardIcon } from '@heroicons/vue/24/outline';
 import { useClipboard } from '@vueuse/core';
 import Qty from 'js-quantities';
+import uuid4 from 'uuid4';
 
 import type { LengthUnitsBasedMeter } from 'utils/length_utils';
 import type { ManningRoughnessCoefficient } from 'utils/manning_formula';
+
+interface Props {
+  baseId?: string;
+}
+withDefaults(defineProps<Props>(), {
+  baseId: () => uuid4(),
+});
 
 const clipboard = useClipboard();
 const notifications = useNotifications();
@@ -491,7 +506,7 @@ const manningAverageVelocity = computed(() => {
   return new Qty(
     calcManningAverageVelocity(
       n.value,
-      circularDepth.value.toBase().scalar,
+      circularDepth.value.baseScalar,
       values.value.i / 100,
     ),
     'm/s',
@@ -510,9 +525,9 @@ const manningFlowVolume = computed(() => {
   return new Qty(
     calcManningFlowVolume(
       n.value,
-      circularDepth.value.toBase().scalar,
+      circularDepth.value.baseScalar,
       values.value.i / 100,
-      circularFlowArea.value.toBase().scalar,
+      circularFlowArea.value.baseScalar,
     ),
     'm^3/s',
   );
