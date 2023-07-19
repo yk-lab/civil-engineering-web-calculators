@@ -7,7 +7,7 @@ export default defineVitestConfig({
     dir: 'tests',
     environment: 'happy-dom',
     coverage: {
-      provider: 'c8',
+      provider: 'istanbul',
       reportsDirectory: 'coverage',
       include: [
         'components/**/*.{vue}',
