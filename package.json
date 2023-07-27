@@ -33,7 +33,7 @@
     }
   },
   "devDependencies": {
-    "@dargmuesli/nuxt-cookie-control": "6.1.1",
+    "@dargmuesli/nuxt-cookie-control": "6.1.5",
     "@heroicons/vue": "2.0.18",
     "@hsorby/vue3-katex": "0.6.0-rc.5",
     "@nuxt/devtools": "0.6.7",
