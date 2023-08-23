@@ -58,7 +58,7 @@
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-tailwindcss": "3.13.0",
     "eslint-plugin-vue": "9.15.1",
-    "happy-dom": "10.5.1",
+    "happy-dom": "10.11.0",
     "husky": "8.0.3",
     "js-quantities": "1.7.6",
     "katex": "0.16.8",
