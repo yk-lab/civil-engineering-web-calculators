@@ -68,7 +68,7 @@
     "nuxt-gtag": "0.5.7",
     "nuxt-headlessui": "1.1.4",
     "nuxt-purgecss": "2.0.0",
-    "nuxt-vitest": "0.10.0",
+    "nuxt-vitest": "0.10.3",
     "postcss": "8.4.26",
     "postcss-html": "1.5.0",
     "prettier": "3.0.0",
