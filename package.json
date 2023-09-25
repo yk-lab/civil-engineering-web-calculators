@@ -63,7 +63,7 @@
     "js-quantities": "1.7.6",
     "katex": "0.16.8",
     "lint-staged": "13.2.3",
-    "nuxt": "3.6.3",
+    "nuxt": "3.7.3",
     "nuxt-cloudflare-analytics": "1.0.8",
     "nuxt-gtag": "0.5.7",
     "nuxt-headlessui": "1.1.4",
