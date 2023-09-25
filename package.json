@@ -75,7 +75,7 @@
     "prettier-plugin-tailwindcss": "0.4.1",
     "rollup-plugin-webpack-stats": "0.2.0",
     "scroll-hint": "1.2.5",
-    "stylelint": "15.10.1",
+    "stylelint": "15.10.3",
     "stylelint-config-standard": "34.0.0",
     "tailwindcss": "3.3.3",
     "uuid4": "2.0.3",
